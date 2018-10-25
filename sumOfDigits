@@ -1,0 +1,77 @@
+// Java program to demonstrate BufferedReader 
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+public class Test 
+{ 
+	public static void main(String[] args) throws IOException 
+	{ 
+	   System.out.println("Enter your variable: ");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        if(input == null || input.isEmpty()) {
+             System.out.println("Invalid Input");
+        } else {
+            if (input.startsWith("-f")) {
+                String[] splited = input.split("\\s+");
+                File file=new File("C:\\" + splited[1]);
+                Scanner sc=new Scanner(file);
+                while (sc.hasNextLine()) 
+	               String line = scan.nextLine();
+	               String s = checkDigit(input);
+                   System.out.println(parseNumber(s));
+            } else if (input.startsWith("-x")) {
+                String s = checkDigit(input);
+                System.out.println(parseHexNumber(s));
+            } else {
+                String s = checkDigit(input);
+                System.out.println(parseNumber(s));
+            }
+        }
+	} 
+	
+	static String parseHexNumber(String str) {
+	    if (!str.isEmpty()) {
+           int hex=Integer.parseInt(str,16); 
+            int result = getSum(hex);
+            return Integer.toString(result);
+        }
+        return "0";
+	}
+	
+	static String checkDigit(String str) {
+	    StringBuilder sb = new StringBuilder();
+        for(char c : str.toCharArray()){
+            if(Character.isDigit(c)){
+                sb.append(c);
+            }  
+        }
+        return sb.toString();
+	}
+	
+	static String parseNumber (String str) {
+        if (!str.isEmpty()) {
+            int n = Integer.parseInt(str);
+            int result = getSum(n);
+            return Integer.toString(result);
+        }
+        return "0";
+	}
+	
+	static int getSum(int n) 
+    {     
+        int sum = 0; 
+          
+        while (n != 0) 
+        { 
+            sum = sum + n % 10; 
+            n = n/10; 
+        } 
+      
+    return sum; 
+    } 
+} 
